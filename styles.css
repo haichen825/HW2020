@@ -2,6 +2,25 @@ body {
     display: flex;
     justify-content: center;
 }
+.header {
+    height: 60px;
+    background-color: rgb(52, 175, 52);
+}
+
+.header-w {
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
+    text-align: left;
+    color: rgb(24, 13, 13);
+}
 .todo-panel{
     Width:30em;
     border: 1px solid #eee;
@@ -50,9 +69,9 @@ body {
     font-weight: unset;
 }
 
-
 .todo-items .ctrlbar > button:hover {
     font-weight: bolder;
+    color: yellow
 }
 
 .task.done > label {

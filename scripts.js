@@ -14,6 +14,7 @@ function renderEditor(){
         let newTask = {
             title: inputE1.value,
             done: false,
+            em:false,
         };
         inputE1.value = "";
         
@@ -80,20 +81,53 @@ function renderTaskCtrlbar(tasks, tasksIdx) {
     let ctrlbarE1 = document.createElement("div");
         ctrlbarE1.className = "ctrlbar";
 
+        let emphasizeE1 = document.createElement("button");
+        if (tasks[tasksIdx].em) {
+            emphasizeE1.innerText = "★";
+          } else {
+            emphasizeE1.innerText = "☆";
+          }
+        
+        emphasizeE1.onclick = () => {
+            console.log("add click");
+            if (tasks[tasksIdx].em) {
+                tasks[tasksIdx].em = false;
+                renderTaskItems();
+              } else {
+                tasks[tasksIdx].em = true;
+                renderTaskItems();
+              };
+        }        
+        ctrlbarE1.append(emphasizeE1);
+
         let upE1 = document.createElement("button");
         if (tasksIdx === 0) {
             upE1.disabled = true;
         }
         upE1.innerText = "↿";
         upE1.onclick = () =>{
-            //
+            var tmp = tasks[tasksIdx];
+            tasks[tasksIdx] = tasks[tasksIdx-1]
+            tasks[tasksIdx-1] = tmp;
+            console.log();
+            renderEditor();
+            renderTaskItems();    //
         }
         ctrlbarE1.append(upE1);
 
         let downE1 = document.createElement("button");
         downE1.innerText = "⇂";
+        if (tasksIdx === tasks.length-1) {
+            downE1.disabled = true;
+        }
+        
         downE1.onclick = () =>{
-            //
+            var tmp = tasks[tasksIdx];
+            tasks[tasksIdx] = tasks[tasksIdx+1]
+            tasks[tasksIdx+1] = tmp;
+            console.log();
+            renderEditor();
+            renderTaskItems();       //
         }
         ctrlbarE1.append(downE1)
 
