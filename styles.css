@@ -4,7 +4,6 @@ body {
 }
 .header {
     height: 60px;
-    background-color: rgb(52, 175, 52);
 }
 
 .header-w {
@@ -71,7 +70,6 @@ body {
 
 .todo-items .ctrlbar > button:hover {
     font-weight: bolder;
-    color: yellow
 }
 
 .task.done > label {
